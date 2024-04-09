@@ -1,0 +1,52 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.date{
+    font-size: 1.5rem;
+    font-weight: 900;
+    position: absolute;
+    left: 90vwl;
+}
+img{
+    width: 300px;
+    height: 300px;
+    margin-left: 25px;
+}
+.news-card{
+    background-color: lightgrey;
+    max-width: 400px;
+    /* max-height: 400px; */
+    padding: 24px;
+    margin:40px auto;
+}
+h3{
+    /* text-align: center; */
+}
+
+#root{
+    /* border: 5px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #cdc8c8;
+}
+header h1{
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    background-color: rgb(163, 171, 193);
+    align-items: center;
+}
+.news-card:hover{
+    background-color: antiquewhite;
+    max-width: 450px;
+    max-height: 450px;
+}
+img:hover{
+    
+    margin-left: 45px;
+
+}

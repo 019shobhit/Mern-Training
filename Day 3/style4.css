@@ -1,0 +1,23 @@
+.parent {
+transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    background-color: aqua;
+    color: white;
+    height: 800px;
+    width: 100%;
+   text-align:justify;
+}
+h2{
+    text-align: center;
+}
+
+@media(800px <=width <=1200px) {
+    .parent {
+        background-color: red;
+    }
+}
+@media(50px <=width <=500px) {
+    .parent {
+        background-color: green;
+    }
+}

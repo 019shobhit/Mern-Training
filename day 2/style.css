@@ -1,0 +1,42 @@
+/* *{
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+#a1 {
+    text-decoration: underline;
+    text-transform: uppercase;
+    background-color: lightblue;
+    color: green;
+    font-size: 32px;
+     margin: 100px 5px; 
+    margin-top: 50px;
+    margin-left: 20;
+    border: 50px solid red;
+    padding: 20px;
+}
+
+#a2 {
+    text-transform: uppercase;
+    background-color: lightyellow;
+    color: rgb(25, 0, 4);
+    font-size: 20px;
+}
+.parent{
+    background-color: pink;
+}  */
+.c1 {
+    /* width: 150px; */
+    background-color: aqua;
+    /* margin-left: 1400px;
+    margin-top: 0px; */
+}
+
+div {
+    #bike {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+    }
+}

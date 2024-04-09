@@ -1,0 +1,25 @@
+.parent {
+    background-color: aqua;
+    display: flex;
+    margin: 20px;
+}
+.child{
+    border: 2px solid red;
+    background-color: lightcoral;
+    width: 150px;
+}
+.parent1{
+    justify-content: space-between;
+}
+.parent2{
+    justify-content: space-evenly;
+}
+.parent3{
+    justify-content: space-around;
+}
+.parent4{
+    justify-content: flex-end;
+}
+
+
+justify ::content

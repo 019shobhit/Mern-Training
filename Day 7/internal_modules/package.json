@@ -5,8 +5,14 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "shobhit":"nodemon script"
+    "shobhit":"npx kill-port 1700 && nodemon script"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies":{
+    "nodemon": "3.1.0"
+  },
+  "dependencies": {
+    "kill-port": "2.0.1"
+  }
 }

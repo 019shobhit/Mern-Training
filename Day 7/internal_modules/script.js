@@ -62,12 +62,13 @@ console.log(products);
 // console.log(data);
 const htmlTemplate = `<!DOCTYPE HTML><html><head>
 <style></style>
-</head><body><p>hello_prassan_varshney</p></body></html>`
+</head><body><p>Hello world!</p></body></html>`
 
 const cardTemplate = `<div class = 'product-card'>
 <h4>_TITLE</h4>
 <p>INFO</p>
 </div>`
+
 // const card1=cardTemplate
 // .replace('_TITLE',products[0].title)
 // .replace('INFO',products[0].description);
@@ -77,7 +78,7 @@ const cardTemplate = `<div class = 'product-card'>
 // .replace('INFO','THIS IS A INDIAN MOBILE');
 // const allCards = card1 + card2;
 
-const allCards = products.map((elem)=>{
+const allCards  = products.map((elem)=>{
     let newCard = cardTemplate;
     newCard = newCard.replace('TITLE',elem.title);
     newCard = newCard.replace('INFO',elem.description);
@@ -95,6 +96,6 @@ const app = http.createServer((req, res) => {
     res.end(page);
 });
 
-app.listen(1400, () => {
-    console.log('SERVER STARTED')
+app.listen(1700, () => {
+    console.log(allCardsString);
 });

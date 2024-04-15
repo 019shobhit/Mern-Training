@@ -97,5 +97,5 @@ const app = http.createServer((req, res) => {
 });
 
 app.listen(1700, () => {
-    console.log(allCardsString);
+    console.log();
 });

@@ -1,18 +1,42 @@
-// console.log('Hello');
-
 const fs = require("fs");
 const http = require("http");
+const { title } = require("process");
 const url = require('url');
 const data = fs.readFileSync("./data.json", "utf8");
 const dataObj = JSON.parse(data).products;
-// console.log(dataObj)
+
+const inputElement = `
+<form action="/product">
+<input type="text" placeholder="Enter product"> 
+<button type="submit">Search</button>
+</form>
+`
 
 const cardTemplate = `
-<div class = 'product-card>
-<h3>$TITLE$</h3>
-<img src="imgsrc" alt ="product-image"/>
-<a href="a_link">More Info</a>
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shoping Page</title>
+        <style>
+            .product-card{
+                border: 2px solid red;
+                height:100px;
+                width:100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = 'product-card style="border: 5px solid red;background-color: aqua; height:400px; width:400px; text-align:center; justify-content:center;  ";
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: #cdc8c8;" >
+            <h1 style="height:50px; background-color: black; color:white; ">$TITLE$</h1>
+            <img src="imgsrc" alt ="product-image"/ style="height:300px; width:320px;background-color: aqua;">
+            <a href="a_link">More Info</a>
+        </div>
+    </body>
+</html>
 `;
 
 let result = [];
@@ -23,49 +47,43 @@ for (let i = 0; i < dataObj.length; i++) {
     temp = temp.replace('a_link', `?id=${i}`);
     result.push(temp);
 }
-// console.log(result);
-
 result = result.join(' ');
-
-//  server = http.createServer((req, res) => {
-//     // const route =req.url;
-//     // console.log('\n',route,'\n');
-//     const {pathname} = url.parse(req.url);
-//     console.log('\n',pathname,'\n');
-//     if(pathname=='/home'){
-//         res.end(result);
-//     }const
-//     else if(pathname == '/product '){
-//         // res.end('prroduct page');
-//         const id  = quary.id;
-//         const productData = 
-//         console.log(dataObj(id));
-//     }
-//     else{
-//         res.end('404 page not found');
-//     }
-
-//     // const path= url.parse('\n',route,'\n');
-//     // console.log(path);
-
-//     // res.end(result);
-// });
-
 server = http.createServer((req, res) => {
-    const path = url.parse(req.url,true);
+    res.writeHead(200,{
+        'content-type':'text/html',
+    });
+    const path = url.parse(req.url, true);
     const pathname = path.pathname;
     const q = path.query;
     if (pathname === '/home') {
-        res.end(result);
+        res.end(inputElement+result);
     }
     else if (pathname === '/product') {
-        const id = q.id;
-        const item = dataObj[id];
-        res.end(`
-        <div>
-            <h4>${item.title}</h4>
-        </div>
-        `);
+        // const id = q.id;
+        const pName = q.productName;
+        // if(id){
+        //         console.log("only id ")
+        // }
+        if(pName){
+            const serachNameResult = dataObj.filter((elem)=>{
+                if(elem.title.includes(pName)){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            })
+            res.end(JSON.stringify(serachNameResult));
+        }
+        else{
+            res.end('<h3>.....ERROR.......</h3>');
+        }
+        // const item = dataObj[id];
+        // res.end(`
+        // <div>
+        //     <h4>${item.title}</h4>
+        // </div>
+        // `);
     }
     else if (pathname === '/about') {
         res.end('about page');

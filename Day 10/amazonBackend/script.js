@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 app.use('/api/products', productRouter);
 
-const url = 'mongodb+srv://$_USERNAME_$:$_PASSWORD_$@cluster0.maaiqk6.mongodb.net/$_DB_NAME_$retryWrites=true&w=majority&appName=Cluster0'
+const url = 'mongodb+srv://$_USERNAME_$:$_PASSWORD_$@cluster0.maaiqk6.mongodb.net/$_DB_NAME_$?retryWrites=true&w=majority&appName=Cluster0'
 
 const databaseUsername = '019shobhit';
 const databasePassword = 'shobhit2002';
@@ -16,7 +16,7 @@ const databaseName = 'amazon_backend';
 let dblink = url.replace('$_USERNAME_$', databaseUsername);
 dblink = url.replace('$_PASSWORD_$', databasePassword);
 dblink = url.replace('$_DB_NAME_$', databaseName);
-
+console.log(dblink);
 mongoose.connect(dblink)
     .then(
     () => console.log('...................database connected.........')

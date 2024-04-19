@@ -2,12 +2,11 @@ const express = require("express");
 const productRouter = require('./routes/productsRoutes.js');
 
 const app = express();
-const test = require('./models/productsmodel.js');
+const test = require('./models/productsModel.js');
 const mongoose = require('mongoose');
 
 app.use('/api/products', productRouter);
 
-// const url = 'mongodb+srv://$_USERNAME_$:$_PASSWORD_$@cluster0.maaiqk6.mongodb.net/$_DB_NAME_$?retryWrites=true&w=majority&appName=Cluster0'
 const url = 'mongodb+srv://019shobhit:shobhit2002@cluster0.maaiqk6.mongodb.net/amazon_backend?retryWrites=true&w=majority&appName=Cluster0'
 
 const databaseUsername = '019shobhit';
@@ -20,10 +19,10 @@ dblink = url.replace('$_DB_NAME_$', databaseName);
 console.log(dblink);
 mongoose.connect(dblink)
     .then(
-    () => console.log('...................database connected.........')
+    () => console.log('............database connected...........')
     );
 
 app.listen(1400,
-    () => console.log('..............App started............')
+    () => console.log('................App started..............')
 );
 

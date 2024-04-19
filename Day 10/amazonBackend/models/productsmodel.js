@@ -31,11 +31,32 @@ const productSchema = mongoose.Schema({
 
 const productModel = mongoose.model('products', productSchema);
 
-// const testProduct=new productModel({
-//     title:'Titan Watch',               we do it for testing it is done or not
-//     price:2000,
+// const testProduct = new productModel({
+//     title: 'Titan Watch', //we do it for testing it is done or not
+//     price: 2000,
 // });
-// testProduct.save().then((res)=>{
+// const testProduct1 = new productModel({
+//     title: 'Laptop', //we do it for testing it is done or not
+//     price: 50000,
+// });
+// const testProduct2 = new productModel({
+//     title: 'Mobile Phone', //we do it for testing it is done or not
+//     price: 19999,
+// });
+// const testProduct3 = new productModel({
+//     title: 'macBook', //we do it for testing it is done or not
+//     price: 119999,
+// });
+// testProduct.save().then((res) => {
 //     console.log(res)
-// });                           till this line
+// });  
+// testProduct1.save().then((res) => {
+//     console.log(res)
+// });   
+// testProduct2.save().then((res) => {
+//     console.log(res)
+// });  
+// testProduct3.save().then((res) => {
+//     console.log(res)
+// });                    //   till this line
 module.exports = productModel;

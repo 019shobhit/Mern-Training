@@ -1,22 +1,33 @@
-const productModel = require('../models/productModel.js');
+const productModel = require('../models/productsModel.js');
 
 const getAllProducts = async (req, res) => {
-    const data = await productModel.find();
-    console.log(data);
-    console.log(req.url);
+    const { sort = 'price', page = 1, pageSize = 2,fields= '-info', ...q } = req.query;
+    const sortStr = sort.split(',').join(' ');
+    const fieldsStr = fields.split(',').join(' ');
+
+    let query = productModel.find(q);
+    query = query.sort(sortStr);
+
+    const skip = pageSize * (page - 1);
+    query = query.skip(skip).limit(pageSize);
+
+    query = query.select(fieldsStr);
+
+    const products = await query;
+
+
     res.json({
-        status: 'success',
+        status: products.length,
         results: 0,
         data: {
-            products: data,
+            products,
         }
-    })
+    });
 }
 
 const addProduct = async (req, res) => {
     try {
-        const {_id,...reqData}= req.body;    //
-        const data=await productModel.create(reqData) ;
+        const { _id, ...data } = await productModel.create(req.body);   
         console.log(req.body);            //yha finction banaya h
         res.json({
             result: 1,
@@ -28,33 +39,33 @@ const addProduct = async (req, res) => {
     }
     catch (err) {
         res.status(403);
-         console.log(err);
+        console.log(err);
         res.json({
-            status:'fail',
-            message:JSON.stringify(err),
+            status: 'fail',
+            message: JSON.stringify(err),
         });
     }
 }
 
-const replaceProduct=async (req,res)=>{
-try{
-    const reqId=req.params.id;
-const data={...req.body,reqId};
-const result=await productModel.findOneAndReplace({_id: reqId},data);
-res.json({
-    status:'success',
-    data:{
-        product:data,
+const replaceProduct = async (req, res) => {
+    try {
+        const reqId = req.params.id;
+        const data = { ...req.body, reqId };
+        const result = await productModel.findOneAndReplace({ _id: reqId }, data);
+        res.json({
+            status: 'success',
+            data: {
+                product: data,
+            }
+        });
     }
-});
-}
-catch(err){
-res.status(500);
-res.json({
-    status:'success',
-    message:JSON.stringify(err),
-})
-}
+    catch (err) {
+        res.status(500);
+        res.json({
+            status: 'success',
+            message: JSON.stringify(err),
+        })
+    }
 }
 module.exports = {
     getAllProducts,             //or yha use call kiya

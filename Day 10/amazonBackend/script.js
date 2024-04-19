@@ -7,7 +7,8 @@ const mongoose = require('mongoose');
 
 app.use('/api/products', productRouter);
 
-const url = 'mongodb+srv://$_USERNAME_$:$_PASSWORD_$@cluster0.maaiqk6.mongodb.net/$_DB_NAME_$?retryWrites=true&w=majority&appName=Cluster0'
+// const url = 'mongodb+srv://$_USERNAME_$:$_PASSWORD_$@cluster0.maaiqk6.mongodb.net/$_DB_NAME_$?retryWrites=true&w=majority&appName=Cluster0'
+const url = 'mongodb+srv://019shobhit:shobhit2002@cluster0.maaiqk6.mongodb.net/amazon_backend?retryWrites=true&w=majority&appName=Cluster0'
 
 const databaseUsername = '019shobhit';
 const databasePassword = 'shobhit2002';

@@ -1,21 +1,41 @@
-// const mongoose = require('mongoose');
-// const { stringify } = require('qs');
+const mongoose = require("mongoose");
+const productSchema = mongoose.Schema({
+    // title:String,        
+    // we can use 2nd method also in next line
+    title: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    // price:Number,     
+    //2nd method of price in next line
+    price: {
+        type: Number,
+        required: true,
+    },
+    description: {
+        type: String,
+    },
+    images: [String],
+    //images ka ek array h
+    creatededAt: {
+        type: Date,
+        default: new Date(),
+    },
+    updatedAt: {
+        type: Date,
+        default: new Date,
+    }
+})
 
-// const productSchema = mongoose.Schema({
-//     title:{
-//         type:String,
-//         unique:true,
-//     },
-//     price: Number,
+
+const productModel = mongoose.model('products', productSchema);
+
+// const testProduct=new productModel({
+//     title:'Titan Watch',               we do it for testing it is done or not
+//     price:2000,
 // });
-
-// const productModel = mongoose.model('products', productSchema);
-
-// const testProduct = new productModel({
-//     title: 'Titan watch',
-//     price: '6000',
-// });
-
 // testProduct.save().then((res)=>{
-//     console.log(res);
-// });
+//     console.log(res)
+// });                           till this line
+module.exports = productModel;
